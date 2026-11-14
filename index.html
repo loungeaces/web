@@ -4,35 +4,222 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lounge Aces · As del Salón</title>
-<meta name="description" content="Lounge Aces: combates aéreos de juguete en el salón de casa. Próximamente.">
-<meta property="og:title" content="Lounge Aces">
-<meta property="og:description" content="Combates aéreos de juguete en el salón de casa. Próximamente.">
-<meta property="og:image" content="https://loungeaces.com/aviones.jpg">
+<meta name="description" content="Lounge Aces: combates aéreos con aviones de maqueta en el salón de casa. Próximamente.">
+<meta property="og:title" content="Lounge Aces · As del Salón">
+<meta property="og:description" content="Combates aéreos con aviones de maqueta en el salón de casa. Próximamente.">
+<meta property="og:image" content="https://loungeaces.com/img/hero.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1d1712">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Nunito:wght@600;700;800&display=swap">
 <style>
-  :root { --bg:#1d1a24; --ink:#f6efe4; --muted:#b9ad9c; --accent:#f2a33a; }
-  * { box-sizing:border-box; margin:0; }
-  body { background:radial-gradient(ellipse at top,#3a2d2a 0%,var(--bg) 60%); color:var(--ink);
-         font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; min-height:100vh;
-         display:flex; flex-direction:column; align-items:center; padding:48px 20px; text-align:center; }
-  h1 { font-size:clamp(2.6rem,8vw,4.8rem); line-height:1; letter-spacing:-.02em; font-weight:800; }
-  h1 span { color:var(--accent); }
-  .es { color:var(--muted); font-size:1.05rem; margin-top:8px; letter-spacing:.08em; text-transform:uppercase; }
-  .tag { max-width:36rem; margin:24px auto 0; font-size:1.2rem; }
-  img { width:100%; height:auto; max-width:960px; margin:40px 0; border-radius:12px; display:block; }
-  .soon { display:inline-block; border:1px solid var(--accent); color:var(--accent); padding:6px 16px;
-          border-radius:999px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; font-size:.85rem; }
-  p.contact { margin-top:24px; color:var(--muted); }
-  a { color:var(--ink); }
-  footer { margin-top:auto; padding-top:48px; color:var(--muted); font-size:.85rem; }
+:root{
+  --ink:#2a1f17; --ink2:#6b5a4a; --paper:#f6ead3; --paper2:#efe0c2; --line:#d9c7a3;
+  --acc:#c9502e; --acc-d:#a53d20; --teal:#2f7f7b; --night:#1d1712;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif; --sans:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:700 17px/1.6 var(--sans);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.kicker{font:800 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+.sec{display:flex;align-items:center;gap:12px;font:800 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin-bottom:18px}
+.sec i{font:italic 500 20px/1 var(--serif);letter-spacing:0;color:var(--acc)}
+.sec::after{content:"";flex:1;height:1px;background:var(--line)}
+h2{font:600 clamp(2rem,5vw,3.2rem)/1.05 var(--serif);letter-spacing:-.01em;font-variation-settings:'opsz' 144;text-wrap:balance;max-width:18ch}
+h2 em{font-style:italic;font-weight:500;color:var(--acc)}
+.lead{max-width:56ch;margin-top:16px;color:var(--ink2);font-size:1.08rem}
+
+/* ---------- Portada ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--paper);background:var(--night);overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:-3%;z-index:-2;background:url(img/hero.jpg) 60% 50%/cover no-repeat;animation:drift 26s ease-in-out infinite alternate}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,rgba(29,23,18,.45) 0,rgba(29,23,18,0) 22%,rgba(29,23,18,0) 42%,rgba(29,23,18,.82) 82%,var(--night) 100%)}
+@keyframes drift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.07) translate(-1.5%,-1%)}}
+.top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:22px 28px}
+.top .kicker{color:#bfe3dc}
+.top a{font:800 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(246,234,211,.5);padding:9px 14px;border-radius:3px;background:rgba(29,23,18,.35);backdrop-filter:blur(4px)}
+.top a:hover{background:var(--paper);color:var(--ink)}
+.hero .in{width:100%;padding-bottom:clamp(64px,11vh,120px)}
+h1{font:600 clamp(3.6rem,13vw,9.5rem)/.86 var(--serif);letter-spacing:-.03em;font-variation-settings:'opsz' 144;text-shadow:0 4px 30px rgba(0,0,0,.45)}
+h1 em{font-style:italic;font-weight:500;color:#f0764a}
+.sub{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:22px}
+.sub span{font:italic 500 clamp(1.2rem,2.6vw,1.7rem)/1 var(--serif)}
+.badge{display:inline-block;font:800 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#fff6e8;background:linear-gradient(180deg,#d4673f,var(--acc) 55%,var(--acc-d));padding:10px 16px 9px;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px))}
+.hero p{max-width:46ch;margin-top:18px;font-size:clamp(1.02rem,1.6vw,1.2rem);color:#f1e3c8}
+/* avioneta con pancarta */
+.tow{position:absolute;left:0;bottom:clamp(8px,2.2vh,22px);display:flex;align-items:center;gap:0;white-space:nowrap;animation:tow 30s linear infinite;will-change:transform;pointer-events:none}
+.tow img{width:clamp(110px,13vw,170px);filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));animation:bob 2.6s ease-in-out infinite alternate}
+.tow .rope{width:38px;height:2px;background:rgba(246,234,211,.7);margin-left:-14px}
+.tow .flag{font:800 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--paper);padding:9px 20px 8px 14px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 50%,100% 100%,0 100%);animation:wave 1.4s ease-in-out infinite alternate;transform-origin:left center}
+@keyframes tow{from{transform:translateX(105vw)}to{transform:translateX(-130%)}}
+@keyframes bob{from{transform:translateY(-5px) rotate(-2deg)}to{transform:translateY(5px) rotate(1.5deg)}}
+@keyframes wave{from{transform:skewY(-3deg)}to{transform:skewY(3deg)}}
+
+/* ---------- Secciones ---------- */
+section{padding:clamp(64px,10vw,120px) 0}
+.paper{background:
+  radial-gradient(1200px 500px at 85% -10%,rgba(201,80,46,.08),transparent 60%),var(--paper)}
+/* salas */
+.shots{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:auto auto;gap:18px;margin-top:40px}
+.shot{position:relative;overflow:hidden;background:var(--night);box-shadow:0 18px 40px -18px rgba(42,31,23,.55);clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px))}
+.shot:first-child{grid-row:span 2}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.shot:hover img{transform:scale(1.05)}
+.shot figcaption{position:absolute;left:0;bottom:0;padding:8px 14px 7px 26px;background:var(--paper);font:800 11px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.facts div{padding:22px 18px;border-left:1px solid var(--line)}
+.facts div:first-child{border-left:0;padding-left:0}
+.facts b{display:block;font:600 2.3rem/1 var(--serif);font-variation-settings:'opsz' 144;color:var(--acc)}
+.facts span{font:800 11.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+
+/* escuadrón */
+.dark{background:var(--night);color:var(--paper);position:relative}
+.dark .sec{color:#cbb894}.dark .sec::after{background:#4a3c2e}.dark .lead{color:#cbb894}
+.dark h2 em{color:#f0764a}
+.squad{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.plane{position:relative;background:linear-gradient(180deg,#fbf2df,var(--paper2));color:var(--ink);padding:16px 16px 18px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.plane:hover{transform:translateY(-6px) rotate(-.6deg)}
+.plane .pic{height:150px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.plane img{max-height:150px;width:auto;filter:drop-shadow(0 12px 10px rgba(42,31,23,.28));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.plane:hover img{transform:translate(-8px,-6px) rotate(-5deg) scale(1.08)}
+.plane h3{font:600 1.5rem/1 var(--serif);font-variation-settings:'opsz' 144;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.plane h3 small{font:800 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--teal);padding:4px 6px 3px;border-radius:2px}
+.plane .es{font:italic 500 .95rem/1 var(--serif);color:var(--acc);margin-top:5px}
+.plane p{font-size:.86rem;line-height:1.4;color:var(--ink2);margin-top:8px}
+.plane.wide{grid-column:span 2;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:8px}
+.plane.wide .pic{height:auto;margin:0}.plane.wide img{max-height:190px}
+
+/* modos */
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border:1px solid var(--line);background:#fbf2df}
+.mode{padding:28px 26px 30px;border-left:1px solid var(--line)}
+.mode:first-child{border-left:0}
+.mode i{font:italic 500 1rem/1 var(--serif);color:var(--acc)}
+.mode h3{font:600 1.9rem/1.05 var(--serif);font-variation-settings:'opsz' 144;margin:6px 0 10px}
+.mode p{font-size:.95rem;color:var(--ink2)}
+.inputs{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.inputs span{font:800 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;background:#efe2c8;border:1px solid #d4c29f;border-bottom-width:3px;border-radius:6px;padding:8px 12px 6px}
+
+/* cierre */
+.end{background:var(--night);color:var(--paper);text-align:center;padding:clamp(72px,11vw,130px) 0 40px;position:relative;overflow:hidden}
+.end h2{margin:0 auto;max-width:16ch}.end h2 em{color:#f0764a}
+.end p{color:#cbb894;margin:16px auto 0;max-width:44ch}
+.cta{display:inline-block;margin-top:30px;font:600 clamp(1.15rem,3vw,1.6rem)/1 var(--serif);text-decoration:none;color:#fff6e8;background:linear-gradient(180deg,#d4673f,var(--acc) 55%,var(--acc-d));padding:17px 30px 18px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));transition:transform .2s,filter .2s}
+.cta:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.cta:focus-visible,.top a:focus-visible{outline:3px solid #f6ead3;outline-offset:3px}
+footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#8d7c66}
+
+/* aparición al hacer scroll */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.on{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .squad{grid-template-columns:repeat(2,1fr)}
+  .facts{grid-template-columns:repeat(2,1fr)}.facts div:nth-child(3){border-left:0;padding-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--line)}
+  .modes{grid-template-columns:1fr}.mode{border-left:0;border-top:1px solid var(--line)}.mode:first-child{border-top:0}
+}
+@media (max-width:640px){
+  .shots{grid-template-columns:1fr}.shot:first-child{grid-row:auto}
+  .top{padding:16px 18px}.top .kicker{display:none}.top{justify-content:flex-end}
+  .hero .bg{background-position:70% 50%}
+  .plane.wide{grid-template-columns:1fr}
+  .plane .pic{height:110px}.plane img{max-height:110px}
+  .plane h3{font-size:1.25rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero .bg,.tow,.tow img,.tow .flag{animation:none}.tow{transform:translateX(8vw)}
+  .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
-  <h1>Lounge <span>Aces</span></h1>
-  <div class="es">As del Salón</div>
-  <p class="tag">Combates aéreos de juguete entre el sofá, la estantería y la lámpara del salón. Biplanos de la Primera Guerra Mundial y cazas de la Segunda, del modo toon al realista.</p>
-  <img src="aviones.jpg" alt="Los siete aviones de juguete del juego: biplanos, un triplano rojo, una avioneta amarilla y cazas de hélice" width="1600" height="665">
-  <div class="soon">Próximamente</div>
-  <p class="contact">¿Quieres saber cuándo despegamos? Escríbenos a <a href="mailto:hola@loungeaces.com">hola@loungeaces.com</a></p>
-  <footer>© 2026 Lounge Aces</footer>
+
+<header class="hero">
+  <div class="bg" role="img" aria-label="Captura del juego: un biplano de maqueta perseguido por un triplano rojo sobre el sofá del salón"></div>
+  <div class="top">
+    <span class="kicker">Cuaderno de vuelo · Escala 1:350</span>
+    <a href="mailto:contact@loungeaces.com">Contacto</a>
+  </div>
+  <div class="wrap in">
+    <h1>Lounge <em>Aces</em></h1>
+    <div class="sub"><span>As del Salón</span><b class="badge">Próximamente</b></div>
+    <p>Combates aéreos con aviones de maqueta de pocos centímetros. El campo de batalla es tu casa: el sofá, la estantería y la lámpara del salón.</p>
+  </div>
+  <div class="tow" aria-hidden="true"><img src="img/duckling.png" alt=""><i class="rope"></i><b class="flag">Próximamente · Lounge Aces</b></div>
+</header>
+
+<main>
+<section class="paper">
+  <div class="wrap">
+    <div class="sec rv"><i>01</i> El campo de batalla</div>
+    <h2 class="rv">Una casa entera, vista desde <em>dos centímetros</em> de avión</h2>
+    <p class="lead rv">Despega desde lo alto de la estantería, pasa entre las patas de la mesa y esquiva el ventilador. A esta escala, el salón es un valle y el pasillo, un cañón.</p>
+    <div class="shots">
+      <figure class="shot rv"><img src="img/sala-chimenea.jpg" alt="Un biplano y un triplano rojo vuelan ante la chimenea y un ventilador" width="1280" height="720" loading="lazy"><figcaption>El salón · chimenea</figcaption></figure>
+      <figure class="shot rv"><img src="img/sala-ventana.jpg" alt="Dos aviones de maqueta junto a la ventana, sobre un aro de madera" width="1280" height="720" loading="lazy"><figcaption>Pasada por la ventana</figcaption></figure>
+      <figure class="shot rv"><img src="img/sala-tele.jpg" alt="Persecución entre dos aviones delante de la tele" width="1280" height="720" loading="lazy"><figcaption>Persecución ante la tele</figcaption></figure>
+    </div>
+    <div class="facts rv">
+      <div><b>5</b><span>Salas: salón, cocina, invernadero, despacho y biblioteca</span></div>
+      <div><b>7</b><span>Aviones de las dos guerras mundiales</span></div>
+      <div><b>3</b><span>Formas de volar: toon, arcade y realista</span></div>
+      <div><b>1:350</b><span>Escala de maqueta</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <div class="sec rv"><i>02</i> El escuadrón</div>
+    <h2 class="rv">Siete juguetes con <em>muy malas pulgas</em></h2>
+    <p class="lead rv">Cada avión vuela a su manera. Unos giran como peonzas y otros suben como cohetes, y todos caben en una mano.</p>
+    <div class="squad">
+      <article class="plane rv"><div class="pic"><img src="img/humpy.png" alt="Biplano de morro rojo" loading="lazy"></div><h3>Humpy</h3><div class="es">Jorobas</div><p>Biplano de la Gran Guerra. Rápido y nervioso: gira a la derecha como ninguno.</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/redwing.png" alt="Triplano rojo" loading="lazy"></div><h3>Redwing</h3><div class="es">Alirrojo</div><p>Triplano de la Gran Guerra. Tres alas para trepar y revolverse en un palmo.</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/gooney.png" alt="Biplano de madera clara" loading="lazy"></div><h3>Gooney</h3><div class="es">El veterano</div><p>Biplano de contrachapado. Potente y noble, el más robusto de los veteranos.</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/duckling.png" alt="Avioneta amarilla de ala alta" loading="lazy"></div><h3>Duckling <small>Escuela</small></h3><div class="es">Patito</div><p>Avioneta de ala alta. Lenta y dócil, perfecta para aprender a volar.</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/pony.png" alt="Caza plateado de hélice" loading="lazy"></div><h3>Pony <small>WW2</small></h3><div class="es">Poni</div><p>Caza de la Segunda Guerra. Seis ametralladoras y velocidad de sobra.</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/seagull.png" alt="Caza naval azul con ala de gaviota" loading="lazy"></div><h3>Seagull <small>WW2</small></h3><div class="es">Gaviota</div><p>Caza naval de ala de gaviota. El motor más grande del cuarto de juegos.</p></article>
+      <article class="plane wide rv"><div class="pic"><img src="img/swallow.png" alt="Caza verde de ala elíptica" loading="lazy"></div><div><h3>Swallow <small>WW2</small></h3><div class="es">Golondrina</div><p>Caza de ala elíptica. Ágil y elegante, con dos cañones para quien se le ponga delante.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="paper">
+  <div class="wrap">
+    <div class="sec rv"><i>03</i> Cómo se vuela</div>
+    <h2 class="rv">De <em>juguete</em> a simulador, tú eliges</h2>
+    <p class="lead rv">El mismo juego sirve para una partida rápida en el móvil y para una tarde entera con palanca y pedales.</p>
+    <div class="modes rv">
+      <div class="mode"><i>Para todos</i><h3>Toon</h3><p>Vuelo sin complicaciones, golpes que rebotan y onomatopeyas de tebeo. Para jugar en el sofá.</p></div>
+      <div class="mode"><i>Para picarse</i><h3>Arcade</h3><p>Acción directa con ayudas al pilotaje. Oleadas de enemigos y a ver cuánto aguantas.</p></div>
+      <div class="mode"><i>Para pilotos</i><h3>Realista</h3><p>Modelo de vuelo de simulador con los datos de cada avión. Barrenas, par motor y cabina incluidos.</p></div>
+    </div>
+    <div class="inputs rv"><span>Teclado</span><span>Mando</span><span>Táctil</span><span>HOTAS</span></div>
+  </div>
+</section>
+</main>
+
+<section class="end">
+  <div class="wrap">
+    <h2 class="rv">Pista despejada. <em>Despegamos pronto.</em></h2>
+    <p class="rv">Estamos puliendo la primera demo. Escríbenos y te avisamos cuando esté lista para volar.</p>
+    <a class="cta rv" href="mailto:contact@loungeaces.com?subject=Av%C3%ADsame%20del%20despegue">contact@loungeaces.com &nbsp;→</a>
+    <footer>© 2026 Lounge Aces · As del Salón</footer>
+  </div>
+</section>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches){els.forEach(function(e){e.classList.add('on')});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e,i){e.style.transitionDelay=(i%4)*70+'ms';io.observe(e)});
+})();
+</script>
 </body>
 </html>
