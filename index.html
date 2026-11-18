@@ -117,6 +117,20 @@ section{padding:clamp(64px,10vw,120px) 0}
 .cta:focus-visible,.top a:focus-visible{outline:3px solid #f6ead3;outline-offset:3px}
 footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#8d7c66}
 
+
+/* rooms */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.room{position:relative;overflow:hidden;aspect-ratio:16/9;background:#2a2119;cursor:pointer;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.room img,.room video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.room video{opacity:0;transition:opacity .3s ease}.room.play video{opacity:1}
+.room figcaption{position:absolute;left:0;bottom:0;padding:8px 14px 7px 22px;background:var(--paper);color:var(--ink);font:800 11px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.room.more{display:flex;align-items:center;justify-content:center;text-align:center;border:1px dashed #6b5a47;background:transparent;cursor:default}
+.room.more b{font:600 1.5rem/1.1 var(--serif);color:var(--paper)}.room.more em{color:#f0764a}
+.squad-sec{background:var(--paper2)}
+.squad-sec .plane{background:linear-gradient(180deg,#fff8ea,#f6ead3)}
+.modes-sec .modes{background:#2a2119;border-color:#4a3c2e}.modes-sec .mode{border-color:#4a3c2e}.modes-sec .mode p{color:#cbb894}
+.modes-sec .inputs span{background:#2a2119;border-color:#5a4a39;color:var(--paper)}
+@media (max-width:900px){.rooms{grid-template-columns:repeat(2,1fr)}}
 /* aparición al hacer scroll */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.on{opacity:1;transform:none}
@@ -161,22 +175,32 @@ footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text
     <div class="sec rv"><i>01</i> The battlefield</div>
     <h2 class="rv">Your home is the <em>war zone</em></h2>
     <div class="shots">
-      <figure class="shot rv" data-clip><img src="img/sala-chimenea.jpg" alt="A biplane and a red triplane fly past the fireplace and a desk fan" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/sala-chimenea.jpg"><source src="img/clip-chimenea.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Fireplace</figcaption></figure>
-      <figure class="shot rv" data-clip><img src="img/sala-ventana.jpg" alt="Dogfight in front of the living-room window" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/sala-ventana.jpg"><source src="img/clip-ventana.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Window</figcaption></figure>
-      <figure class="shot rv" data-clip><img src="img/sala-tele.jpg" alt="Chase in front of the TV" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/sala-tele.jpg"><source src="img/clip-tele.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>TV</figcaption></figure>
-    </div>
-    <div class="facts rv">
-      <div><b>5</b><span>Rooms</span></div>
-      <div><b>7</b><span>Planes</span></div>
-      <div><b>3</b><span>Flight modes</span></div>
-      <div><b>1:350</b><span>Scale</span></div>
+      <figure class="shot rv" data-clip><img src="img/shot-tv.jpg" alt="A biplane shoots the living-room TV and the screen shatters" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/shot-tv.jpg"><source src="img/clip-tv.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Smash the TV</figcaption></figure>
+      <figure class="shot rv" data-clip><img src="img/shot-table.jpg" alt="A biplane skims the rug under the coffee table" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/shot-table.jpg"><source src="img/clip-table.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Under the table</figcaption></figure>
+      <figure class="shot rv" data-clip><img src="img/sala-chimenea.jpg" alt="A biplane chases a red triplane past the fireplace" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/sala-chimenea.jpg"><source src="img/clip-chimenea.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Dogfight</figcaption></figure>
     </div>
   </div>
 </section>
 
-<section class="dark">
+<section class="dark rooms-sec">
   <div class="wrap">
-    <div class="sec rv"><i>02</i> The squadron</div>
+    <div class="sec rv"><i>02</i> The rooms</div>
+    <h2 class="rv">A whole house <em>to fly</em></h2>
+    <div class="rooms">
+      <figure class="room rv" data-clip><img src="img/room-salon.jpg" alt="Living room" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-salon.jpg"><source src="img/room-salon.mp4" type="video/mp4"></video><figcaption>Living room</figcaption></figure>
+      <figure class="room rv" data-clip><img src="img/room-cocina.jpg" alt="Kitchen" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-cocina.jpg"><source src="img/room-cocina.mp4" type="video/mp4"></video><figcaption>Kitchen</figcaption></figure>
+      <figure class="room rv" data-clip><img src="img/room-invernadero.jpg" alt="Winter garden" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-invernadero.jpg"><source src="img/room-invernadero.mp4" type="video/mp4"></video><figcaption>Winter garden</figcaption></figure>
+      <figure class="room rv" data-clip><img src="img/room-oval.jpg" alt="Oval office" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-oval.jpg"><source src="img/room-oval.mp4" type="video/mp4"></video><figcaption>Oval office</figcaption></figure>
+      <figure class="room rv" data-clip><img src="img/room-biblioteca.jpg" alt="Library" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-biblioteca.jpg"><source src="img/room-biblioteca.mp4" type="video/mp4"></video><figcaption>Library</figcaption></figure>
+      <figure class="room more rv"><b>More rooms<br><em>on the way</em></b></figure>
+    </div>
+  </div>
+</section>
+
+
+<section class="squad-sec">
+  <div class="wrap">
+    <div class="sec rv"><i>03</i> The squadron</div>
     <h2 class="rv">Seven toys with <em>an attitude</em></h2>
     <div class="squad">
       <article class="plane rv"><div class="pic"><img src="img/humpy.png" alt="Toy biplane with a round cowling" loading="lazy"></div><h3>Humpy</h3><p>WWI biplane</p></article>
@@ -192,7 +216,7 @@ footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text
 
 <section class="paper">
   <div class="wrap">
-    <div class="sec rv"><i>03</i> How you fly</div>
+    <div class="sec rv"><i>04</i> How you fly</div>
     <h2 class="rv">From <em>toy</em> to sim</h2>
     <div class="modes rv">
       <div class="mode"><i>Pick up and play</i><h3>Toon</h3><p>Easy flying, bouncy crashes.</p></div>
