@@ -36,7 +36,7 @@ h2 em{font-style:italic;font-weight:500;color:var(--acc)}
 
 /* ---------- Portada ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--paper);background:var(--night);overflow:hidden;isolation:isolate}
-.hero .bg{position:absolute;inset:-3%;z-index:-2;background:url(img/hero.jpg) 60% 50%/cover no-repeat;animation:drift 26s ease-in-out infinite alternate}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;z-index:-2;object-fit:cover;object-position:60% 50%}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
   linear-gradient(180deg,rgba(29,23,18,.45) 0,rgba(29,23,18,0) 22%,rgba(29,23,18,0) 42%,rgba(29,23,18,.82) 82%,var(--night) 100%)}
 @keyframes drift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.07) translate(-1.5%,-1%)}}
@@ -125,13 +125,13 @@ footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text
 @media (max-width:640px){
   .shots{grid-template-columns:1fr}.shot:first-child{grid-row:auto}
   .top{padding:16px 18px}.top .kicker{display:none}.top{justify-content:flex-end}
-  .hero .bg{background-position:70% 50%}
+  .hero .bg{object-position:72% 50%}
   .plane.wide{grid-template-columns:1fr}
   .plane .pic{height:110px}.plane img{max-height:110px}
   .plane h3{font-size:1.25rem}
 }
 @media (prefers-reduced-motion:reduce){
-  .hero .bg,.tow,.tow img,.tow .flag{animation:none}.tow{transform:translateX(8vw)}
+  .tow,.tow img,.tow .flag{animation:none}.tow{transform:translateX(8vw)}
   .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}
 }
 </style>
@@ -139,15 +139,14 @@ footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text
 <body>
 
 <header class="hero">
-  <div class="bg" role="img" aria-label="Captura del juego: un biplano de maqueta perseguido por un triplano rojo sobre el sofá del salón"></div>
+  <video class="bg" autoplay muted loop playsinline preload="auto" poster="img/vuelo-poster.jpg" aria-label="Vídeo del juego: un biplano de maqueta persigue a un triplano rojo por el salón"><source src="img/vuelo.webm" type="video/webm"><source src="img/vuelo.mp4" type="video/mp4"></video>
   <div class="top">
-    <span class="kicker">Cuaderno de vuelo · Escala 1:350</span>
+    <span class="kicker">Escala 1:350</span>
     <a href="mailto:contact@loungeaces.com">Contacto</a>
   </div>
   <div class="wrap in">
     <h1>Lounge <em>Aces</em></h1>
     <div class="sub"><span>As del Salón</span><b class="badge">Próximamente</b></div>
-    <p>Combates aéreos con aviones de maqueta de pocos centímetros. El campo de batalla es tu casa: el sofá, la estantería y la lámpara del salón.</p>
   </div>
   <div class="tow" aria-hidden="true"><img src="img/duckling.png" alt=""><i class="rope"></i><b class="flag">Próximamente · Lounge Aces</b></div>
 </header>
@@ -156,18 +155,17 @@ footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text
 <section class="paper">
   <div class="wrap">
     <div class="sec rv"><i>01</i> El campo de batalla</div>
-    <h2 class="rv">Una casa entera, vista desde <em>dos centímetros</em> de avión</h2>
-    <p class="lead rv">Despega desde lo alto de la estantería, pasa entre las patas de la mesa y esquiva el ventilador. A esta escala, el salón es un valle y el pasillo, un cañón.</p>
+    <h2 class="rv">Tu casa es el <em>campo de batalla</em></h2>
     <div class="shots">
-      <figure class="shot rv"><img src="img/sala-chimenea.jpg" alt="Un biplano y un triplano rojo vuelan ante la chimenea y un ventilador" width="1280" height="720" loading="lazy"><figcaption>El salón · chimenea</figcaption></figure>
-      <figure class="shot rv"><img src="img/sala-ventana.jpg" alt="Dos aviones de maqueta junto a la ventana, sobre un aro de madera" width="1280" height="720" loading="lazy"><figcaption>Pasada por la ventana</figcaption></figure>
-      <figure class="shot rv"><img src="img/sala-tele.jpg" alt="Persecución entre dos aviones delante de la tele" width="1280" height="720" loading="lazy"><figcaption>Persecución ante la tele</figcaption></figure>
+      <figure class="shot rv"><img src="img/sala-chimenea.jpg" alt="Un biplano y un triplano rojo vuelan ante la chimenea y un ventilador" width="1280" height="720" loading="lazy"><figcaption>Chimenea</figcaption></figure>
+      <figure class="shot rv"><img src="img/sala-ventana.jpg" alt="Dos aviones de maqueta junto a la ventana, sobre un aro de madera" width="1280" height="720" loading="lazy"><figcaption>Ventana</figcaption></figure>
+      <figure class="shot rv"><img src="img/sala-tele.jpg" alt="Persecución entre dos aviones delante de la tele" width="1280" height="720" loading="lazy"><figcaption>Tele</figcaption></figure>
     </div>
     <div class="facts rv">
-      <div><b>5</b><span>Salas: salón, cocina, invernadero, despacho y biblioteca</span></div>
-      <div><b>7</b><span>Aviones de las dos guerras mundiales</span></div>
-      <div><b>3</b><span>Formas de volar: toon, arcade y realista</span></div>
-      <div><b>1:350</b><span>Escala de maqueta</span></div>
+      <div><b>5</b><span>Salas</span></div>
+      <div><b>7</b><span>Aviones</span></div>
+      <div><b>3</b><span>Modos de vuelo</span></div>
+      <div><b>1:350</b><span>Escala</span></div>
     </div>
   </div>
 </section>
