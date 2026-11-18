@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lounge Aces · As del Salón</title>
-<meta name="description" content="Lounge Aces: combates aéreos con aviones de maqueta en el salón de casa. Próximamente.">
-<meta property="og:title" content="Lounge Aces · As del Salón">
-<meta property="og:description" content="Combates aéreos con aviones de maqueta en el salón de casa. Próximamente.">
-<meta property="og:image" content="https://loungeaces.com/img/hero.jpg">
+<title>Lounge Aces · Toy dogfights in your living room</title>
+<meta name="description" content="Lounge Aces: toy-sized dogfights across the living room. Coming soon.">
+<meta property="og:title" content="Lounge Aces">
+<meta property="og:description" content="Toy-sized dogfights across the living room. Coming soon.">
+<meta property="og:image" content="https://loungeaces.com/img/og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#1d1712">
@@ -36,7 +36,7 @@ h2 em{font-style:italic;font-weight:500;color:var(--acc)}
 
 /* ---------- Portada ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--paper);background:var(--night);overflow:hidden;isolation:isolate}
-.hero .bg{position:absolute;inset:0;width:100%;height:100%;z-index:-2;object-fit:cover;object-position:60% 50%}
+.hero .bg{position:absolute;inset:-3%;z-index:-2;background:url(img/hero.jpg) 62% 40%/cover no-repeat;animation:drift 30s ease-in-out infinite alternate}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
   linear-gradient(180deg,rgba(29,23,18,.45) 0,rgba(29,23,18,0) 22%,rgba(29,23,18,0) 42%,rgba(29,23,18,.82) 82%,var(--night) 100%)}
 @keyframes drift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.07) translate(-1.5%,-1%)}}
@@ -68,8 +68,12 @@ section{padding:clamp(64px,10vw,120px) 0}
 .shots{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:auto auto;gap:18px;margin-top:40px}
 .shot{position:relative;overflow:hidden;background:var(--night);box-shadow:0 18px 40px -18px rgba(42,31,23,.55);clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px))}
 .shot:first-child{grid-row:span 2}
-.shot img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.shot:hover img{transform:scale(1.05)}
+.shot img,.shot video{width:100%;height:100%;object-fit:cover;display:block}
+.shot video{position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
+.shot.play video{opacity:1}
+.shot{cursor:pointer}
+.shot .hint{position:absolute;top:12px;right:22px;font:800 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:rgba(29,23,18,.55);padding:6px 9px 5px;border-radius:3px;transition:opacity .3s}
+.shot.play .hint{opacity:0}
 .shot figcaption{position:absolute;left:0;bottom:0;padding:8px 14px 7px 26px;background:var(--paper);font:800 11px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .facts div{padding:22px 18px;border-left:1px solid var(--line)}
@@ -84,13 +88,13 @@ section{padding:clamp(64px,10vw,120px) 0}
 .squad{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
 .plane{position:relative;background:linear-gradient(180deg,#fbf2df,var(--paper2));color:var(--ink);padding:16px 16px 18px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));transition:transform .35s cubic-bezier(.2,.7,.2,1)}
 .plane:hover{transform:translateY(-6px) rotate(-.6deg)}
-.plane .pic{height:150px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
-.plane img{max-height:150px;width:auto;filter:drop-shadow(0 12px 10px rgba(42,31,23,.28));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.plane .pic{height:160px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.plane img{max-height:160px;width:auto;filter:drop-shadow(0 12px 10px rgba(42,31,23,.28));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .plane:hover img{transform:translate(-8px,-6px) rotate(-5deg) scale(1.08)}
 .plane h3{font:600 1.5rem/1 var(--serif);font-variation-settings:'opsz' 144;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .plane h3 small{font:800 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--teal);padding:4px 6px 3px;border-radius:2px}
 .plane .es{font:italic 500 .95rem/1 var(--serif);color:var(--acc);margin-top:5px}
-.plane p{font-size:.86rem;line-height:1.4;color:var(--ink2);margin-top:8px}
+.plane p{font:800 11px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-top:8px}
 .plane.wide{grid-column:span 2;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:8px}
 .plane.wide .pic{height:auto;margin:0}.plane.wide img{max-height:190px}
 
@@ -125,13 +129,13 @@ footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text
 @media (max-width:640px){
   .shots{grid-template-columns:1fr}.shot:first-child{grid-row:auto}
   .top{padding:16px 18px}.top .kicker{display:none}.top{justify-content:flex-end}
-  .hero .bg{object-position:72% 50%}
+  .hero .bg{background-position:74% 40%}
   .plane.wide{grid-template-columns:1fr}
   .plane .pic{height:110px}.plane img{max-height:110px}
   .plane h3{font-size:1.25rem}
 }
 @media (prefers-reduced-motion:reduce){
-  .tow,.tow img,.tow .flag{animation:none}.tow{transform:translateX(8vw)}
+  .hero .bg,.tow,.tow img,.tow .flag{animation:none}.tow{transform:translateX(8vw)}
   .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}
 }
 </style>
@@ -139,84 +143,91 @@ footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text
 <body>
 
 <header class="hero">
-  <video class="bg" autoplay muted loop playsinline preload="auto" poster="img/vuelo-poster.jpg" aria-label="Vídeo del juego: un biplano de maqueta persigue a un triplano rojo por el salón"><source src="img/vuelo.webm" type="video/webm"><source src="img/vuelo.mp4" type="video/mp4"></video>
+  <div class="bg" role="img" aria-label="In-game screenshot: a toy biplane chases a red triplane past the living-room window"></div>
   <div class="top">
-    <span class="kicker">Escala 1:350</span>
-    <a href="mailto:contact@loungeaces.com">Contacto</a>
+    <span class="kicker">Scale 1:350</span>
+    <a href="mailto:contact@loungeaces.com">Contact</a>
   </div>
   <div class="wrap in">
     <h1>Lounge <em>Aces</em></h1>
-    <div class="sub"><span>As del Salón</span><b class="badge">Próximamente</b></div>
+    <div class="sub"><span>Toy dogfights in your living room</span><b class="badge">Coming soon</b></div>
   </div>
-  <div class="tow" aria-hidden="true"><img src="img/duckling.png" alt=""><i class="rope"></i><b class="flag">Próximamente · Lounge Aces</b></div>
+  <div class="tow" aria-hidden="true"><img src="img/duckling.png" alt=""><i class="rope"></i><b class="flag">Coming soon · Lounge Aces</b></div>
 </header>
 
 <main>
 <section class="paper">
   <div class="wrap">
-    <div class="sec rv"><i>01</i> El campo de batalla</div>
-    <h2 class="rv">Tu casa es el <em>campo de batalla</em></h2>
+    <div class="sec rv"><i>01</i> The battlefield</div>
+    <h2 class="rv">Your home is the <em>war zone</em></h2>
     <div class="shots">
-      <figure class="shot rv"><img src="img/sala-chimenea.jpg" alt="Un biplano y un triplano rojo vuelan ante la chimenea y un ventilador" width="1280" height="720" loading="lazy"><figcaption>Chimenea</figcaption></figure>
-      <figure class="shot rv"><img src="img/sala-ventana.jpg" alt="Dos aviones de maqueta junto a la ventana, sobre un aro de madera" width="1280" height="720" loading="lazy"><figcaption>Ventana</figcaption></figure>
-      <figure class="shot rv"><img src="img/sala-tele.jpg" alt="Persecución entre dos aviones delante de la tele" width="1280" height="720" loading="lazy"><figcaption>Tele</figcaption></figure>
+      <figure class="shot rv" data-clip><img src="img/sala-chimenea.jpg" alt="A biplane and a red triplane fly past the fireplace and a desk fan" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/sala-chimenea.jpg"><source src="img/clip-chimenea.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Fireplace</figcaption></figure>
+      <figure class="shot rv" data-clip><img src="img/sala-ventana.jpg" alt="Dogfight in front of the living-room window" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/sala-ventana.jpg"><source src="img/clip-ventana.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Window</figcaption></figure>
+      <figure class="shot rv" data-clip><img src="img/sala-tele.jpg" alt="Chase in front of the TV" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/sala-tele.jpg"><source src="img/clip-tele.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>TV</figcaption></figure>
     </div>
     <div class="facts rv">
-      <div><b>5</b><span>Salas</span></div>
-      <div><b>7</b><span>Aviones</span></div>
-      <div><b>3</b><span>Modos de vuelo</span></div>
-      <div><b>1:350</b><span>Escala</span></div>
+      <div><b>5</b><span>Rooms</span></div>
+      <div><b>7</b><span>Planes</span></div>
+      <div><b>3</b><span>Flight modes</span></div>
+      <div><b>1:350</b><span>Scale</span></div>
     </div>
   </div>
 </section>
 
 <section class="dark">
   <div class="wrap">
-    <div class="sec rv"><i>02</i> El escuadrón</div>
-    <h2 class="rv">Siete juguetes con <em>muy malas pulgas</em></h2>
-    <p class="lead rv">Cada avión vuela a su manera. Unos giran como peonzas y otros suben como cohetes, y todos caben en una mano.</p>
+    <div class="sec rv"><i>02</i> The squadron</div>
+    <h2 class="rv">Seven toys with <em>an attitude</em></h2>
     <div class="squad">
-      <article class="plane rv"><div class="pic"><img src="img/humpy.png" alt="Biplano de morro rojo" loading="lazy"></div><h3>Humpy</h3><div class="es">Jorobas</div><p>Biplano de la Gran Guerra. Rápido y nervioso: gira a la derecha como ninguno.</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/redwing.png" alt="Triplano rojo" loading="lazy"></div><h3>Redwing</h3><div class="es">Alirrojo</div><p>Triplano de la Gran Guerra. Tres alas para trepar y revolverse en un palmo.</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/gooney.png" alt="Biplano de madera clara" loading="lazy"></div><h3>Gooney</h3><div class="es">El veterano</div><p>Biplano de contrachapado. Potente y noble, el más robusto de los veteranos.</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/duckling.png" alt="Avioneta amarilla de ala alta" loading="lazy"></div><h3>Duckling <small>Escuela</small></h3><div class="es">Patito</div><p>Avioneta de ala alta. Lenta y dócil, perfecta para aprender a volar.</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/pony.png" alt="Caza plateado de hélice" loading="lazy"></div><h3>Pony <small>WW2</small></h3><div class="es">Poni</div><p>Caza de la Segunda Guerra. Seis ametralladoras y velocidad de sobra.</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/seagull.png" alt="Caza naval azul con ala de gaviota" loading="lazy"></div><h3>Seagull <small>WW2</small></h3><div class="es">Gaviota</div><p>Caza naval de ala de gaviota. El motor más grande del cuarto de juegos.</p></article>
-      <article class="plane wide rv"><div class="pic"><img src="img/swallow.png" alt="Caza verde de ala elíptica" loading="lazy"></div><div><h3>Swallow <small>WW2</small></h3><div class="es">Golondrina</div><p>Caza de ala elíptica. Ágil y elegante, con dos cañones para quien se le ponga delante.</p></div></article>
+      <article class="plane rv"><div class="pic"><img src="img/humpy.png" alt="Toy biplane with a round cowling" loading="lazy"></div><h3>Humpy</h3><p>WWI biplane</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/redwing.png" alt="Red toy triplane" loading="lazy"></div><h3>Redwing</h3><p>WWI triplane</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/gooney.png" alt="Toy biplane in natural wood" loading="lazy"></div><h3>Gooney</h3><p>WWI biplane</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/duckling.png" alt="Yellow high-wing toy plane" loading="lazy"></div><h3>Duckling <small>Trainer</small></h3><p>Trainer</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/pony.png" alt="Silver toy fighter with a cartoon pilot" loading="lazy"></div><h3>Pony <small>WWII</small></h3><p>WWII fighter</p></article>
+      <article class="plane rv"><div class="pic"><img src="img/seagull.png" alt="Blue gull-wing toy fighter" loading="lazy"></div><h3>Seagull <small>WWII</small></h3><p>WWII naval fighter</p></article>
+      <article class="plane wide rv"><div class="pic"><img src="img/swallow.png" alt="Green elliptical-wing toy fighter" loading="lazy"></div><div><h3>Swallow <small>WWII</small></h3><p>WWII fighter</p></div></article>
     </div>
   </div>
 </section>
 
 <section class="paper">
   <div class="wrap">
-    <div class="sec rv"><i>03</i> Cómo se vuela</div>
-    <h2 class="rv">De <em>juguete</em> a simulador, tú eliges</h2>
-    <p class="lead rv">El mismo juego sirve para una partida rápida en el móvil y para una tarde entera con palanca y pedales.</p>
+    <div class="sec rv"><i>03</i> How you fly</div>
+    <h2 class="rv">From <em>toy</em> to sim</h2>
     <div class="modes rv">
-      <div class="mode"><i>Para todos</i><h3>Toon</h3><p>Vuelo sin complicaciones, golpes que rebotan y onomatopeyas de tebeo. Para jugar en el sofá.</p></div>
-      <div class="mode"><i>Para picarse</i><h3>Arcade</h3><p>Acción directa con ayudas al pilotaje. Oleadas de enemigos y a ver cuánto aguantas.</p></div>
-      <div class="mode"><i>Para pilotos</i><h3>Realista</h3><p>Modelo de vuelo de simulador con los datos de cada avión. Barrenas, par motor y cabina incluidos.</p></div>
+      <div class="mode"><i>Pick up and play</i><h3>Toon</h3><p>Easy flying, bouncy crashes.</p></div>
+      <div class="mode"><i>Wave after wave</i><h3>Arcade</h3><p>Straight-up action with flight assists.</p></div>
+      <div class="mode"><i>For pilots</i><h3>Sim</h3><p>Real flight model for every plane.</p></div>
     </div>
-    <div class="inputs rv"><span>Teclado</span><span>Mando</span><span>Táctil</span><span>HOTAS</span></div>
+    <div class="inputs rv"><span>Keyboard</span><span>Gamepad</span><span>Touch</span><span>HOTAS</span></div>
   </div>
 </section>
 </main>
 
 <section class="end">
   <div class="wrap">
-    <h2 class="rv">Pista despejada. <em>Despegamos pronto.</em></h2>
-    <p class="rv">Estamos puliendo la primera demo. Escríbenos y te avisamos cuando esté lista para volar.</p>
-    <a class="cta rv" href="mailto:contact@loungeaces.com?subject=Av%C3%ADsame%20del%20despegue">contact@loungeaces.com &nbsp;→</a>
-    <footer>© 2026 Lounge Aces · As del Salón</footer>
+    <h2 class="rv">Cleared for <em>takeoff soon</em></h2>
+    <a class="cta rv" href="mailto:contact@loungeaces.com?subject=Let%20me%20know%20when%20it%20flies">contact@loungeaces.com &nbsp;→</a>
+    <footer>© 2026 Lounge Aces</footer>
   </div>
 </section>
 
 <script>
 (function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   var els=document.querySelectorAll('.rv');
-  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches){els.forEach(function(e){e.classList.add('on')});return;}
-  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
-  els.forEach(function(e,i){e.style.transitionDelay=(i%4)*70+'ms';io.observe(e)});
+  if(!('IntersectionObserver' in window)||reduce){els.forEach(function(e){e.classList.add('on')});}
+  else{var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e,i){e.style.transitionDelay=(i%4)*70+'ms';io.observe(e)});}
+  // clips: play on hover (mouse) or tap (touch)
+  var hover=matchMedia('(hover:hover)').matches;
+  document.querySelectorAll('[data-clip]').forEach(function(f){
+    var v=f.querySelector('video');
+    function on(){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});f.classList.add('play');}
+    function off(){v.pause();f.classList.remove('play');}
+    if(hover){f.addEventListener('mouseenter',on);f.addEventListener('mouseleave',off);}
+    f.addEventListener('click',function(){f.classList.contains('play')?off():on();});
+  });
 })();
 </script>
 </body>
