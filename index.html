@@ -3,254 +3,256 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lounge Aces · Toy dogfights in your living room</title>
+<title>Lounge Aces: toy dogfights in your living room</title>
 <meta name="description" content="Lounge Aces: toy-sized dogfights across the living room. Coming soon.">
 <meta property="og:title" content="Lounge Aces">
 <meta property="og:description" content="Toy-sized dogfights across the living room. Coming soon.">
 <meta property="og:image" content="https://loungeaces.com/img/og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#1d1712">
+<meta name="theme-color" content="#173133">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Nunito:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&display=swap">
 <style>
+/* Tokens, taken from the game's living room:
+   wallpaper teal, wainscot teal, lamplight brass, roundel red / blue, paper */
 :root{
-  --ink:#2a1f17; --ink2:#6b5a4a; --paper:#f6ead3; --paper2:#efe0c2; --line:#d9c7a3;
-  --acc:#c9502e; --acc-d:#a53d20; --teal:#2f7f7b; --night:#1d1712;
-  --serif:'Fraunces',Georgia,'Times New Roman',serif; --sans:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --wall:#173133;      /* deep wallpaper teal, page base */
+  --wains:#22474a;     /* wainscot panels, raised surfaces */
+  --brass:#f2c35b;     /* lamplight, the one warm accent */
+  --red:#d6402e;       /* Redwing / roundel red */
+  --blue:#2b4f8e;      /* roundel blue */
+  --paper:#f5ecdc;     /* text on dark, light sections */
+  --ink:#1c2526;       /* text on paper */
+  --mute:#9fbab6;      /* secondary text on teal */
+  --display:'Big Shoulders Display',Impact,'Arial Narrow',sans-serif;
+  --body:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font:700 17px/1.6 var(--sans);overflow-x:hidden}
-img{max-width:100%;height:auto;display:block}
+body{background:var(--wall);color:var(--paper);font:400 1.0625rem/1.6 var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+img{height:auto}
 a{color:inherit}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-.kicker{font:800 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
-.sec{display:flex;align-items:center;gap:12px;font:800 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin-bottom:18px}
-.sec i{font:italic 500 20px/1 var(--serif);letter-spacing:0;color:var(--acc)}
-.sec::after{content:"";flex:1;height:1px;background:var(--line)}
-h2{font:600 clamp(2rem,5vw,3.2rem)/1.05 var(--serif);letter-spacing:-.01em;font-variation-settings:'opsz' 144;text-wrap:balance;max-width:18ch}
-h2 em{font-style:italic;font-weight:500;color:var(--acc)}
-.lead{max-width:56ch;margin-top:16px;color:var(--ink2);font-size:1.08rem}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
 
-/* ---------- Portada ---------- */
-.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--paper);background:var(--night);overflow:hidden;isolation:isolate}
-.hero .bg{position:absolute;inset:-3%;z-index:-2;background:url(img/hero.jpg) 62% 40%/cover no-repeat;animation:drift 30s ease-in-out infinite alternate}
+/* the game's diamond wallpaper, drawn in CSS */
+.wallpaper{background-color:var(--wall);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='64'%3E%3Cpath d='M22 24l4 8-4 8-4-8z' fill='%23214446'/%3E%3Cpath d='M0 -8l4 8-4 8-4-8zM44 -8l4 8-4 8-4-8zM0 56l4 8-4 8-4-8zM44 56l4 8-4 8-4-8z' fill='%23214446'/%3E%3C/svg%3E")}
+
+h2{font:900 clamp(2.6rem,7vw,5rem)/.9 var(--display);letter-spacing:.005em;text-wrap:balance}
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,26rem);gap:12px 48px;align-items:end;margin-bottom:clamp(28px,4vw,48px)}
+.intro p{color:var(--mute);max-width:40ch;font-size:1.05rem}
+
+/* ---------- Hero: one still, one orchestrated entrance ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;background:#0e1d1e;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:0;z-index:-2;background:url(img/hero.jpg) 62% 40%/cover no-repeat;transform-origin:62% 45%;animation:settle 2.4s cubic-bezier(.16,.8,.2,1) both}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(180deg,rgba(29,23,18,.45) 0,rgba(29,23,18,0) 22%,rgba(29,23,18,0) 42%,rgba(29,23,18,.82) 82%,var(--night) 100%)}
-@keyframes drift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.07) translate(-1.5%,-1%)}}
-.top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:22px 28px}
-.top .kicker{color:#bfe3dc}
-.top a{font:800 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(246,234,211,.5);padding:9px 14px;border-radius:3px;background:rgba(29,23,18,.35);backdrop-filter:blur(4px)}
+  linear-gradient(180deg,rgba(14,29,30,.55) 0,rgba(14,29,30,0) 18%,rgba(14,29,30,0) 48%,rgba(23,49,51,.9) 88%,var(--wall) 100%)}
+@keyframes settle{from{transform:scale(1.12);filter:brightness(.4)}to{transform:none;filter:none}}
+.top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:flex-end;padding:22px clamp(18px,4vw,40px)}
+.top a{font:600 .95rem/1 var(--body);text-decoration:none;padding:11px 16px;border-radius:999px;background:rgba(14,29,30,.45);border:1px solid rgba(245,236,220,.35);backdrop-filter:blur(6px);transition:background .2s,color .2s}
 .top a:hover{background:var(--paper);color:var(--ink)}
-.hero .in{width:100%;padding-bottom:clamp(64px,11vh,120px)}
-h1{font:600 clamp(3.6rem,13vw,9.5rem)/.86 var(--serif);letter-spacing:-.03em;font-variation-settings:'opsz' 144;text-shadow:0 4px 30px rgba(0,0,0,.45)}
-h1 em{font-style:italic;font-weight:500;color:#f0764a}
-.sub{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:22px}
-.sub span{font:italic 500 clamp(1.2rem,2.6vw,1.7rem)/1 var(--serif)}
-.badge{display:inline-block;font:800 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#fff6e8;background:linear-gradient(180deg,#d4673f,var(--acc) 55%,var(--acc-d));padding:10px 16px 9px;clip-path:polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px))}
-.hero p{max-width:46ch;margin-top:18px;font-size:clamp(1.02rem,1.6vw,1.2rem);color:#f1e3c8}
-/* avioneta con pancarta */
-.tow{position:absolute;left:0;bottom:clamp(8px,2.2vh,22px);display:flex;align-items:center;gap:0;white-space:nowrap;animation:tow 30s linear infinite;will-change:transform;pointer-events:none}
-.tow img{width:clamp(110px,13vw,170px);filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));animation:bob 2.6s ease-in-out infinite alternate}
-.tow .rope{width:38px;height:2px;background:rgba(246,234,211,.7);margin-left:-14px}
-.tow .flag{font:800 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);background:var(--paper);padding:9px 20px 8px 14px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 50%,100% 100%,0 100%);animation:wave 1.4s ease-in-out infinite alternate;transform-origin:left center}
-@keyframes tow{from{transform:translateX(105vw)}to{transform:translateX(-130%)}}
+.hero .in{width:100%;padding-bottom:clamp(72px,13vh,140px)}
+h1{font:900 clamp(4.6rem,17vw,13.5rem)/.8 var(--display);letter-spacing:-.005em;text-shadow:0 6px 40px rgba(0,0,0,.4);animation:rise 1.1s .5s cubic-bezier(.16,.8,.2,1) both}
+h1 span{display:block}
+.tag{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:clamp(16px,2.4vw,26px);animation:rise 1.1s .75s cubic-bezier(.16,.8,.2,1) both}
+.tag p{font:600 clamp(1.15rem,2.3vw,1.6rem)/1.2 var(--body)}
+.soon{font:700 .95rem/1 var(--body);color:var(--ink);background:var(--brass);padding:10px 15px;border-radius:999px}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+/* the Duckling tows the banner across the bottom */
+.tow{position:absolute;left:0;bottom:clamp(10px,2.4vh,24px);display:flex;align-items:center;white-space:nowrap;animation:tow 32s 2s linear infinite both;pointer-events:none}
+.tow img{width:clamp(96px,11vw,150px);filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));animation:bob 2.6s ease-in-out infinite alternate}
+.tow i{width:36px;height:2px;background:rgba(245,236,220,.7);margin-left:-12px}
+.tow b{font:700 .95rem/1 var(--body);color:var(--ink);background:var(--paper);padding:9px 22px 9px 14px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 50%,100% 100%,0 100%);animation:flap 1.4s ease-in-out infinite alternate;transform-origin:left center}
+@keyframes tow{from{transform:translateX(105vw)}to{transform:translateX(-140%)}}
 @keyframes bob{from{transform:translateY(-5px) rotate(-2deg)}to{transform:translateY(5px) rotate(1.5deg)}}
-@keyframes wave{from{transform:skewY(-3deg)}to{transform:skewY(3deg)}}
+@keyframes flap{from{transform:skewY(-3deg)}to{transform:skewY(3deg)}}
 
-/* ---------- Secciones ---------- */
-section{padding:clamp(64px,10vw,120px) 0}
-.paper{background:
-  radial-gradient(1200px 500px at 85% -10%,rgba(201,80,46,.08),transparent 60%),var(--paper)}
-/* salas */
-.shots{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:auto auto;gap:18px;margin-top:40px}
-.shot{position:relative;overflow:hidden;background:var(--night);box-shadow:0 18px 40px -18px rgba(42,31,23,.55);clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px))}
-.shot:first-child{grid-row:span 2}
-.shot img,.shot video{width:100%;height:100%;object-fit:cover;display:block}
-.shot video{position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
-.shot.play video{opacity:1}
-.shot{cursor:pointer}
-.shot .hint{position:absolute;top:12px;right:22px;font:800 10px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--paper);background:rgba(29,23,18,.55);padding:6px 9px 5px;border-radius:3px;transition:opacity .3s}
-.shot.play .hint{opacity:0}
-.shot figcaption{position:absolute;left:0;bottom:0;padding:8px 14px 7px 26px;background:var(--paper);font:800 11px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.facts div{padding:22px 18px;border-left:1px solid var(--line)}
-.facts div:first-child{border-left:0;padding-left:0}
-.facts b{display:block;font:600 2.3rem/1 var(--serif);font-variation-settings:'opsz' 144;color:var(--acc)}
-.facts span{font:800 11.5px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+section{padding:clamp(72px,10vw,128px) 0}
 
-/* escuadrón */
-.dark{background:var(--night);color:var(--paper);position:relative}
-.dark .sec{color:#cbb894}.dark .sec::after{background:#4a3c2e}.dark .lead{color:#cbb894}
-.dark h2 em{color:#f0764a}
-.squad{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
-.plane{position:relative;background:linear-gradient(180deg,#fbf2df,var(--paper2));color:var(--ink);padding:16px 16px 18px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));transition:transform .35s cubic-bezier(.2,.7,.2,1)}
-.plane:hover{transform:translateY(-6px) rotate(-.6deg)}
-.plane .pic{height:160px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
-.plane img{max-height:160px;width:auto;filter:drop-shadow(0 12px 10px rgba(42,31,23,.28));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.plane:hover img{transform:translate(-8px,-6px) rotate(-5deg) scale(1.08)}
-.plane h3{font:600 1.5rem/1 var(--serif);font-variation-settings:'opsz' 144;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.plane h3 small{font:800 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--teal);padding:4px 6px 3px;border-radius:2px}
-.plane .es{font:italic 500 .95rem/1 var(--serif);color:var(--acc);margin-top:5px}
-.plane p{font:800 11px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-top:8px}
-.plane.wide{grid-column:span 2;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:8px}
-.plane.wide .pic{height:auto;margin:0}.plane.wide img{max-height:190px}
+/* ---------- Clips: widescreen, roundel to play ---------- */
+.reel{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,22px)}
+.clip{position:relative;cursor:pointer}
+.clip:first-child{grid-column:1/-1}
+.frame{position:relative;aspect-ratio:12/5;overflow:hidden;background:#000;border-radius:4px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.frame img,.frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame video{opacity:0;transition:opacity .3s}
+.play .frame video{opacity:1}
+.roundel{position:absolute;right:clamp(12px,1.6vw,20px);bottom:clamp(12px,1.6vw,20px);width:clamp(40px,4.4vw,56px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,var(--red) 0 33%,#f5ecdc 34% 64%,var(--blue) 65% 100%);box-shadow:0 10px 30px rgba(0,0,0,.45);transition:opacity .3s,scale .3s}
+.clip:hover .roundel{scale:1.08}
+.play .roundel{opacity:0;scale:.6}
+.clip figcaption{display:flex;align-items:baseline;gap:14px;padding-top:14px}
+.clip figcaption b{font:800 clamp(1.5rem,2.6vw,2rem)/1 var(--display)}
+.clip figcaption span{color:var(--mute);font-size:.98rem}
 
-/* modos */
-.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border:1px solid var(--line);background:#fbf2df}
-.mode{padding:28px 26px 30px;border-left:1px solid var(--line)}
-.mode:first-child{border-left:0}
-.mode i{font:italic 500 1rem/1 var(--serif);color:var(--acc)}
-.mode h3{font:600 1.9rem/1.05 var(--serif);font-variation-settings:'opsz' 144;margin:6px 0 10px}
-.mode p{font-size:.95rem;color:var(--ink2)}
-.inputs{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.inputs span{font:800 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;background:#efe2c8;border:1px solid #d4c29f;border-bottom-width:3px;border-radius:6px;padding:8px 12px 6px}
+/* ---------- Rooms ---------- */
+.rooms-sec{background:var(--wains)}
+.rooms-sec .intro p{color:#b4cdc9}
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,18px)}
+.room{position:relative;cursor:pointer}
+.room .frame{aspect-ratio:16/9;box-shadow:0 20px 40px -24px rgba(0,0,0,.6)}
+.room figcaption{padding-top:10px;font:600 1rem/1.2 var(--body)}
+.room.more{cursor:default;display:flex;flex-direction:column}
+.room.more .frame{display:flex;align-items:center;justify-content:center;background:transparent;border:2px dashed rgba(245,236,220,.28);box-shadow:none;text-align:center;padding:16px}
+.room.more .frame b{font:800 clamp(1.4rem,2.4vw,1.9rem)/1 var(--display);color:var(--brass)}
 
-/* cierre */
-.end{background:var(--night);color:var(--paper);text-align:center;padding:clamp(72px,11vw,130px) 0 40px;position:relative;overflow:hidden}
-.end h2{margin:0 auto;max-width:16ch}.end h2 em{color:#f0764a}
-.end p{color:#cbb894;margin:16px auto 0;max-width:44ch}
-.cta{display:inline-block;margin-top:30px;font:600 clamp(1.15rem,3vw,1.6rem)/1 var(--serif);text-decoration:none;color:#fff6e8;background:linear-gradient(180deg,#d4673f,var(--acc) 55%,var(--acc-d));padding:17px 30px 18px;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));transition:transform .2s,filter .2s}
-.cta:hover{transform:translateY(-2px);filter:brightness(1.1)}
-.cta:focus-visible,.top a:focus-visible{outline:3px solid #f6ead3;outline-offset:3px}
-footer{margin-top:72px;font:800 11.5px/1.6 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#8d7c66}
+/* ---------- Squadron: a toy shelf ---------- */
+.squad-sec{background:var(--paper);color:var(--ink)}
+.squad-sec .intro p{color:#55615f}
+.shelf{--cols:4;--gap:clamp(12px,2vw,28px);display:flex;flex-wrap:wrap;justify-content:center;row-gap:clamp(36px,5vw,64px);column-gap:var(--gap)}
+.shelf .toy{flex:0 0 calc((100% - (var(--cols) - 1)*var(--gap))/var(--cols))}
+.toy{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
+.toy .pic{height:clamp(110px,14vw,170px);width:100%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;border-bottom:6px solid #c9a46a;box-shadow:0 10px 0 -4px #a9844d}
+.toy img{max-height:100%;width:auto;filter:drop-shadow(0 14px 8px rgba(28,37,38,.25));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.toy:hover img{transform:translateY(-10px) rotate(-4deg)}
+.toy h3{font:900 clamp(1.7rem,2.8vw,2.3rem)/1 var(--display);margin-top:20px}
+.toy p{font-size:.95rem;color:#55615f;margin-top:4px}
 
+/* ---------- How you fly ---------- */
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px)}
+.mode{border-top:3px solid var(--brass);padding-top:18px}
+.mode h3{font:900 clamp(2.2rem,4vw,3.2rem)/.9 var(--display)}
+.mode p{color:var(--mute);margin-top:10px;max-width:30ch}
+.inputs{display:flex;flex-wrap:wrap;gap:10px;margin-top:clamp(32px,4vw,48px)}
+.inputs span{font:600 .95rem/1 var(--body);padding:10px 14px;border-radius:8px;background:var(--wains);border-bottom:3px solid #0f2425}
 
-/* rooms */
-.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.room{position:relative;overflow:hidden;aspect-ratio:16/9;background:#2a2119;cursor:pointer;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
-.room img,.room video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.room video{opacity:0;transition:opacity .3s ease}.room.play video{opacity:1}
-.room figcaption{position:absolute;left:0;bottom:0;padding:8px 14px 7px 22px;background:var(--paper);color:var(--ink);font:800 11px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase}
-.room.more{display:flex;align-items:center;justify-content:center;text-align:center;border:1px dashed #6b5a47;background:transparent;cursor:default}
-.room.more b{font:600 1.5rem/1.1 var(--serif);color:var(--paper)}.room.more em{color:#f0764a}
-.squad-sec{background:var(--paper2)}
-.squad-sec .plane{background:linear-gradient(180deg,#fff8ea,#f6ead3)}
-.modes-sec .modes{background:#2a2119;border-color:#4a3c2e}.modes-sec .mode{border-color:#4a3c2e}.modes-sec .mode p{color:#cbb894}
-.modes-sec .inputs span{background:#2a2119;border-color:#5a4a39;color:var(--paper)}
-@media (max-width:900px){.rooms{grid-template-columns:repeat(2,1fr)}}
-/* aparición al hacer scroll */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
-.rv.on{opacity:1;transform:none}
+/* ---------- End ---------- */
+.end{text-align:center;padding:clamp(80px,12vw,150px) 0 40px;border-top:1px solid #23484b}
+.end h2{font-size:clamp(3rem,9vw,6.5rem)}
+.end p{color:var(--mute);margin:16px auto 0;max-width:40ch}
+.cta{display:inline-block;margin-top:30px;font:700 clamp(1.05rem,2.4vw,1.3rem)/1 var(--body);text-decoration:none;color:var(--ink);background:var(--brass);padding:18px 28px;border-radius:999px;transition:transform .2s,background .2s}
+.cta:hover{transform:translateY(-2px);background:#ffd47a}
+footer{margin-top:80px;font-size:.9rem;color:#6f8c88}
 
 @media (max-width:900px){
-  .squad{grid-template-columns:repeat(2,1fr)}
-  .facts{grid-template-columns:repeat(2,1fr)}.facts div:nth-child(3){border-left:0;padding-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--line)}
-  .modes{grid-template-columns:1fr}.mode{border-left:0;border-top:1px solid var(--line)}.mode:first-child{border-top:0}
+  .intro{grid-template-columns:1fr}
+  .rooms{grid-template-columns:repeat(2,1fr)}
+  .shelf{--cols:2}
+  .modes{grid-template-columns:1fr}
 }
 @media (max-width:640px){
-  .shots{grid-template-columns:1fr}.shot:first-child{grid-row:auto}
-  .top{padding:16px 18px}.top .kicker{display:none}.top{justify-content:flex-end}
-  .hero .bg{background-position:74% 40%}
-  .plane.wide{grid-template-columns:1fr}
-  .plane .pic{height:110px}.plane img{max-height:110px}
-  .plane h3{font-size:1.25rem}
+  .reel{grid-template-columns:1fr}
+  .hero .bg{background-position:72% 40%}
+  .clip figcaption{flex-direction:column;gap:4px}
 }
 @media (prefers-reduced-motion:reduce){
-  .hero .bg,.tow,.tow img,.tow .flag{animation:none}.tow{transform:translateX(8vw)}
-  .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}
+  .hero .bg,h1,.tag,.tow,.tow img,.tow b{animation:none}
+  .tow{transform:translateX(6vw)}
+  html{scroll-behavior:auto}
 }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <div class="bg" role="img" aria-label="In-game screenshot: a toy biplane chases a red triplane past the living-room window"></div>
-  <div class="top">
-    <span class="kicker">Scale 1:350</span>
-    <a href="mailto:contact@loungeaces.com">Contact</a>
-  </div>
+  <div class="bg" role="img" aria-label="In-game screenshot: a toy biplane banks past the living-room window"></div>
+  <nav class="top"><a href="mailto:contact@loungeaces.com">Contact</a></nav>
   <div class="wrap in">
-    <h1>Lounge <em>Aces</em></h1>
-    <div class="sub"><span>Toy dogfights in your living room</span><b class="badge">Coming soon</b></div>
+    <h1><span>Lounge</span><span>Aces</span></h1>
+    <div class="tag"><p>Toy dogfights in your living room</p><span class="soon">Coming soon</span></div>
   </div>
-  <div class="tow" aria-hidden="true"><img src="img/duckling.png" alt=""><i class="rope"></i><b class="flag">Coming soon · Lounge Aces</b></div>
+  <div class="tow" aria-hidden="true"><img src="img/duckling.png" alt=""><i></i><b>Coming soon</b></div>
 </header>
 
 <main>
-<section class="paper">
+<section class="wallpaper">
   <div class="wrap">
-    <div class="sec rv"><i>01</i> The battlefield</div>
-    <h2 class="rv">Your home is the <em>war zone</em></h2>
-    <div class="shots">
-      <figure class="shot rv" data-clip><img src="img/shot-tv.jpg" alt="A biplane shoots the living-room TV and the screen shatters" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/shot-tv.jpg"><source src="img/clip-tv.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Smash the TV</figcaption></figure>
-      <figure class="shot rv" data-clip><img src="img/shot-table.jpg" alt="A biplane skims the rug under the coffee table" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/shot-table.jpg"><source src="img/clip-table.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Under the table</figcaption></figure>
-      <figure class="shot rv" data-clip><img src="img/sala-chimenea.jpg" alt="A biplane chases a red triplane past the fireplace" width="960" height="540" loading="lazy"><video muted loop playsinline preload="none" poster="img/sala-chimenea.jpg"><source src="img/clip-chimenea.mp4" type="video/mp4"></video><span class="hint">▶ Play</span><figcaption>Dogfight</figcaption></figure>
+    <div class="intro">
+      <h2>Your home is the war zone</h2>
+      <p>Shoot up the TV, skim the rug, chase a triplane round the fireplace.</p>
+    </div>
+    <div class="reel">
+      <figure class="clip" data-clip tabindex="0" aria-label="Play clip: Smash the TV">
+        <div class="frame"><img src="img/shot-tv.jpg" alt="A toy biplane opens fire on the living-room TV" width="960" height="400" loading="lazy"><video muted loop playsinline preload="none"><source src="img/clip-tv.mp4" type="video/mp4"></video><span class="roundel" aria-hidden="true"></span></div>
+        <figcaption><b>Smash the TV</b><span>Shoot the screen to pieces.</span></figcaption>
+      </figure>
+      <figure class="clip" data-clip tabindex="0" aria-label="Play clip: Under the table">
+        <div class="frame"><img src="img/shot-table.jpg" alt="A toy biplane skims the rug past the fireplace" width="960" height="400" loading="lazy"><video muted loop playsinline preload="none"><source src="img/clip-table.mp4" type="video/mp4"></video><span class="roundel" aria-hidden="true"></span></div>
+        <figcaption><b>Under the table</b><span>Thread the legs at rug height.</span></figcaption>
+      </figure>
+      <figure class="clip" data-clip tabindex="0" aria-label="Play clip: Dogfight">
+        <div class="frame"><img src="img/shot-dog.jpg" alt="A red triplane trails smoke with a biplane on its tail" width="960" height="400" loading="lazy"><video muted loop playsinline preload="none"><source src="img/clip-dog.mp4" type="video/mp4"></video><span class="roundel" aria-hidden="true"></span></div>
+        <figcaption><b>Dogfight</b><span>Get on Redwing's tail.</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="dark rooms-sec">
+<section class="rooms-sec">
   <div class="wrap">
-    <div class="sec rv"><i>02</i> The rooms</div>
-    <h2 class="rv">A whole house <em>to fly</em></h2>
+    <div class="intro">
+      <h2>A whole house to fly</h2>
+      <p>Hover or tap a room for a quick look around.</p>
+    </div>
     <div class="rooms">
-      <figure class="room rv" data-clip><img src="img/room-salon.jpg" alt="Living room" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-salon.jpg"><source src="img/room-salon.mp4" type="video/mp4"></video><figcaption>Living room</figcaption></figure>
-      <figure class="room rv" data-clip><img src="img/room-cocina.jpg" alt="Kitchen" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-cocina.jpg"><source src="img/room-cocina.mp4" type="video/mp4"></video><figcaption>Kitchen</figcaption></figure>
-      <figure class="room rv" data-clip><img src="img/room-invernadero.jpg" alt="Winter garden" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-invernadero.jpg"><source src="img/room-invernadero.mp4" type="video/mp4"></video><figcaption>Winter garden</figcaption></figure>
-      <figure class="room rv" data-clip><img src="img/room-oval.jpg" alt="Oval office" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-oval.jpg"><source src="img/room-oval.mp4" type="video/mp4"></video><figcaption>Oval office</figcaption></figure>
-      <figure class="room rv" data-clip><img src="img/room-biblioteca.jpg" alt="Library" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none" poster="img/room-biblioteca.jpg"><source src="img/room-biblioteca.mp4" type="video/mp4"></video><figcaption>Library</figcaption></figure>
-      <figure class="room more rv"><b>More rooms<br><em>on the way</em></b></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around the living room"><div class="frame"><img src="img/room-salon.jpg" alt="Living room" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-salon.mp4" type="video/mp4"></video></div><figcaption>Living room</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around the kitchen"><div class="frame"><img src="img/room-cocina.jpg" alt="Kitchen" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-cocina.mp4" type="video/mp4"></video></div><figcaption>Kitchen</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around the winter garden"><div class="frame"><img src="img/room-invernadero.jpg" alt="Winter garden" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-invernadero.mp4" type="video/mp4"></video></div><figcaption>Winter garden</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around the oval office"><div class="frame"><img src="img/room-oval.jpg" alt="Oval office" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-oval.mp4" type="video/mp4"></video></div><figcaption>Oval office</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around the library"><div class="frame"><img src="img/room-biblioteca.jpg" alt="Library" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-biblioteca.mp4" type="video/mp4"></video></div><figcaption>Library</figcaption></figure>
+      <figure class="room more"><div class="frame"><b>More rooms on the way</b></div></figure>
     </div>
   </div>
 </section>
-
 
 <section class="squad-sec">
   <div class="wrap">
-    <div class="sec rv"><i>03</i> The squadron</div>
-    <h2 class="rv">Seven toys with <em>an attitude</em></h2>
-    <div class="squad">
-      <article class="plane rv"><div class="pic"><img src="img/humpy.png" alt="Toy biplane with a round cowling" loading="lazy"></div><h3>Humpy</h3><p>WWI biplane</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/redwing.png" alt="Red toy triplane" loading="lazy"></div><h3>Redwing</h3><p>WWI triplane</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/gooney.png" alt="Toy biplane in natural wood" loading="lazy"></div><h3>Gooney</h3><p>WWI biplane</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/duckling.png" alt="Yellow high-wing toy plane" loading="lazy"></div><h3>Duckling <small>Trainer</small></h3><p>Trainer</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/pony.png" alt="Silver toy fighter with a cartoon pilot" loading="lazy"></div><h3>Pony <small>WWII</small></h3><p>WWII fighter</p></article>
-      <article class="plane rv"><div class="pic"><img src="img/seagull.png" alt="Blue gull-wing toy fighter" loading="lazy"></div><h3>Seagull <small>WWII</small></h3><p>WWII naval fighter</p></article>
-      <article class="plane wide rv"><div class="pic"><img src="img/swallow.png" alt="Green elliptical-wing toy fighter" loading="lazy"></div><div><h3>Swallow <small>WWII</small></h3><p>WWII fighter</p></div></article>
+    <div class="intro">
+      <h2>Seven toys, one squadron</h2>
+      <p>Each one has its own flight model.</p>
+    </div>
+    <div class="shelf">
+      <article class="toy"><div class="pic"><img src="img/humpy.png" alt="Toy biplane with a round cowling" loading="lazy"></div><h3>Humpy</h3><p>WWI biplane</p></article>
+      <article class="toy"><div class="pic"><img src="img/redwing.png" alt="Red toy triplane" loading="lazy"></div><h3>Redwing</h3><p>WWI triplane</p></article>
+      <article class="toy"><div class="pic"><img src="img/gooney.png" alt="Toy biplane in natural wood" loading="lazy"></div><h3>Gooney</h3><p>WWI biplane</p></article>
+      <article class="toy"><div class="pic"><img src="img/duckling.png" alt="Yellow high-wing toy plane" loading="lazy"></div><h3>Duckling</h3><p>Trainer</p></article>
+      <article class="toy"><div class="pic"><img src="img/pony.png" alt="Silver toy fighter with a cartoon pilot" loading="lazy"></div><h3>Pony</h3><p>WWII fighter</p></article>
+      <article class="toy"><div class="pic"><img src="img/seagull.png" alt="Blue gull-wing toy fighter" loading="lazy"></div><h3>Seagull</h3><p>WWII naval fighter</p></article>
+      <article class="toy"><div class="pic"><img src="img/swallow.png" alt="Green elliptical-wing toy fighter" loading="lazy"></div><h3>Swallow</h3><p>WWII fighter</p></article>
     </div>
   </div>
 </section>
 
-<section class="paper">
+<section class="wallpaper">
   <div class="wrap">
-    <div class="sec rv"><i>04</i> How you fly</div>
-    <h2 class="rv">From <em>toy</em> to sim</h2>
-    <div class="modes rv">
-      <div class="mode"><i>Pick up and play</i><h3>Toon</h3><p>Easy flying, bouncy crashes.</p></div>
-      <div class="mode"><i>Wave after wave</i><h3>Arcade</h3><p>Straight-up action with flight assists.</p></div>
-      <div class="mode"><i>For pilots</i><h3>Sim</h3><p>Real flight model for every plane.</p></div>
+    <div class="intro">
+      <h2>From toy box to flight sim</h2>
+      <p>Pick how real the flying feels.</p>
     </div>
-    <div class="inputs rv"><span>Keyboard</span><span>Gamepad</span><span>Touch</span><span>HOTAS</span></div>
+    <div class="modes">
+      <div class="mode"><h3>Toon</h3><p>Easy flying and bouncy crashes. Hand it to anyone.</p></div>
+      <div class="mode"><h3>Arcade</h3><p>Wave after wave of rivals, with flight assists on.</p></div>
+      <div class="mode"><h3>Sim</h3><p>A real flight model for every plane. Bring your stick.</p></div>
+    </div>
+    <div class="inputs"><span>Keyboard</span><span>Gamepad</span><span>Touch</span><span>HOTAS</span></div>
   </div>
 </section>
 </main>
 
-<section class="end">
+<section class="end wallpaper">
   <div class="wrap">
-    <h2 class="rv">Cleared for <em>takeoff soon</em></h2>
-    <a class="cta rv" href="mailto:contact@loungeaces.com?subject=Let%20me%20know%20when%20it%20flies">contact@loungeaces.com &nbsp;→</a>
+    <h2>Cleared for takeoff soon</h2>
+    <p>Write to us and we'll tell you when it flies.</p>
+    <a class="cta" href="mailto:contact@loungeaces.com?subject=Let%20me%20know%20when%20it%20flies">contact@loungeaces.com</a>
     <footer>© 2026 Lounge Aces</footer>
   </div>
 </section>
 
 <script>
 (function(){
-  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var els=document.querySelectorAll('.rv');
-  if(!('IntersectionObserver' in window)||reduce){els.forEach(function(e){e.classList.add('on')});}
-  else{var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
-  els.forEach(function(e,i){e.style.transitionDelay=(i%4)*70+'ms';io.observe(e)});}
-  // clips: play on hover (mouse) or tap (touch)
+  // clips: play on hover (mouse), tap (touch) or Enter/Space (keyboard)
   var hover=matchMedia('(hover:hover)').matches;
   document.querySelectorAll('[data-clip]').forEach(function(f){
     var v=f.querySelector('video');
     function on(){v.preload='auto';var p=v.play();if(p&&p.catch)p.catch(function(){});f.classList.add('play');}
     function off(){v.pause();f.classList.remove('play');}
+    function toggle(){f.classList.contains('play')?off():on();}
     if(hover){f.addEventListener('mouseenter',on);f.addEventListener('mouseleave',off);}
-    f.addEventListener('click',function(){f.classList.contains('play')?off():on();});
+    else f.addEventListener('click',toggle);
+    f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
   });
 })();
 </script>
