@@ -104,7 +104,7 @@ section{padding:clamp(72px,10vw,128px) 0}
 /* ---------- Squadron: a toy shelf ---------- */
 .squad-sec{background:var(--paper);color:var(--ink)}
 .squad-sec .intro p{color:#55615f}
-.shelf{--cols:4;--gap:clamp(12px,2vw,28px);display:flex;flex-wrap:wrap;justify-content:center;row-gap:clamp(36px,5vw,64px);column-gap:var(--gap)}
+.shelf{--cols:5;--gap:clamp(12px,2vw,28px);display:flex;flex-wrap:wrap;justify-content:center;row-gap:clamp(36px,5vw,64px);column-gap:var(--gap)}
 .shelf .toy{flex:0 0 calc((100% - (var(--cols) - 1)*var(--gap))/var(--cols))}
 .toy{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
 .toy .pic{height:clamp(110px,14vw,170px);width:100%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;border-bottom:6px solid #c9a46a;box-shadow:0 10px 0 -4px #a9844d}
@@ -112,6 +112,23 @@ section{padding:clamp(72px,10vw,128px) 0}
 .toy:hover img{transform:translateY(-10px) rotate(-4deg)}
 .toy h3{font:900 clamp(1.7rem,2.8vw,2.3rem)/1 var(--display);margin-top:20px}
 .toy p{font-size:.95rem;color:#55615f;margin-top:4px}
+
+/* ---------- Ways to play ---------- */
+.play-sec{background:var(--wains)}
+.play-sec .intro p{color:#b4cdc9}
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,32px) clamp(18px,3vw,40px)}
+.way{border-top:3px solid var(--brass);padding-top:16px}
+.way.big{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:8px 40px;align-items:baseline}
+.way h3{font:900 clamp(2rem,3.6vw,2.8rem)/.9 var(--display)}
+.way.big h3{font-size:clamp(2.8rem,6vw,4.4rem)}
+.way p{color:#b4cdc9;margin-top:10px;max-width:34ch}
+.way.big p{font-size:1.1rem;max-width:44ch;margin-top:0}
+/* ---------- Workshop: one plane, eight paint jobs ---------- */
+.shop-sec{background:var(--paper);color:var(--ink);overflow:hidden}
+.shop-sec .intro p{color:#55615f}
+.paints{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,2vw,28px) clamp(8px,2vw,24px)}
+.paints img{width:100%;height:auto;filter:drop-shadow(0 14px 8px rgba(28,37,38,.22));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.paints img:hover{transform:translateY(-8px) rotate(-3deg)}
 
 /* ---------- How you fly ---------- */
 .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,40px)}
@@ -132,10 +149,15 @@ footer{margin-top:80px;font-size:.9rem;color:#6f8c88}
 @media (max-width:900px){
   .intro{grid-template-columns:1fr}
   .rooms{grid-template-columns:repeat(2,1fr)}
-  .shelf{--cols:2}
+  .shelf{--cols:3}
   .modes{grid-template-columns:1fr}
+  .ways{grid-template-columns:repeat(2,1fr)}
+  .way.big{grid-template-columns:1fr}
 }
 @media (max-width:640px){
+  .ways{grid-template-columns:1fr}
+  .paints{grid-template-columns:repeat(2,1fr)}
+  .shelf{--cols:2}
   .reel{grid-template-columns:1fr}
   .hero .bg{background-position:72% 40%}
 }
@@ -180,16 +202,19 @@ footer{margin-top:80px;font-size:.9rem;color:#6f8c88}
 <section class="rooms-sec">
   <div class="wrap">
     <div class="intro">
-      <h2>A whole house to fly</h2>
-      <p>Hover or tap a room for a quick look around.</p>
+      <h2>From the living room to Area 51</h2>
+      <p>Hover or tap a room for a quick look around. More are on the way.</p>
     </div>
     <div class="rooms">
-      <figure class="room" data-clip tabindex="0" aria-label="Look around the living room"><div class="frame"><img src="img/room-salon.jpg" alt="Living room" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-salon.mp4" type="video/mp4"></video></div><figcaption>Living room</figcaption></figure>
-      <figure class="room" data-clip tabindex="0" aria-label="Look around the kitchen"><div class="frame"><img src="img/room-cocina.jpg" alt="Kitchen" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-cocina.mp4" type="video/mp4"></video></div><figcaption>Kitchen</figcaption></figure>
-      <figure class="room" data-clip tabindex="0" aria-label="Look around the winter garden"><div class="frame"><img src="img/room-invernadero.jpg" alt="Winter garden" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-invernadero.mp4" type="video/mp4"></video></div><figcaption>Winter garden</figcaption></figure>
-      <figure class="room" data-clip tabindex="0" aria-label="Look around the oval office"><div class="frame"><img src="img/room-oval.jpg" alt="Oval office" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-oval.mp4" type="video/mp4"></video></div><figcaption>Oval office</figcaption></figure>
-      <figure class="room" data-clip tabindex="0" aria-label="Look around the library"><div class="frame"><img src="img/room-biblioteca.jpg" alt="Library" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-biblioteca.mp4" type="video/mp4"></video></div><figcaption>Library</figcaption></figure>
-      <figure class="room more"><div class="frame"><b>More rooms on the way</b></div></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around: Living room"><div class="frame"><img src="img/room-salon.jpg" alt="Living room" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-salon.mp4" type="video/mp4"></video></div><figcaption>Living room</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around: Kitchen"><div class="frame"><img src="img/room-cocina.jpg" alt="Kitchen" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-cocina.mp4" type="video/mp4"></video></div><figcaption>Kitchen</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around: Winter garden"><div class="frame"><img src="img/room-invernadero.jpg" alt="Winter garden" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-invernadero.mp4" type="video/mp4"></video></div><figcaption>Winter garden</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around: Oval office"><div class="frame"><img src="img/room-oval.jpg" alt="Oval office" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-oval.mp4" type="video/mp4"></video></div><figcaption>Oval office</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around: Library"><div class="frame"><img src="img/room-biblioteca.jpg" alt="Library" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-biblioteca.mp4" type="video/mp4"></video></div><figcaption>Library</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around: Area 51"><div class="frame"><img src="img/room-area51.jpg" alt="Area 51" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-area51.mp4" type="video/mp4"></video></div><figcaption>Area 51</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around: War room"><div class="frame"><img src="img/room-bunker.jpg" alt="War room" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-bunker.mp4" type="video/mp4"></video></div><figcaption>War room</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around: Mission control, 1969"><div class="frame"><img src="img/room-control69.jpg" alt="Mission control, 1969" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-control69.mp4" type="video/mp4"></video></div><figcaption>Mission control, 1969</figcaption></figure>
+      <figure class="room" data-clip tabindex="0" aria-label="Look around: Museum"><div class="frame"><img src="img/room-museo.jpg" alt="Museum" width="768" height="432" loading="lazy"><video muted loop playsinline preload="none"><source src="img/room-museo.mp4" type="video/mp4"></video></div><figcaption>Museum</figcaption></figure>
     </div>
   </div>
 </section>
@@ -197,7 +222,7 @@ footer{margin-top:80px;font-size:.9rem;color:#6f8c88}
 <section class="squad-sec">
   <div class="wrap">
     <div class="intro">
-      <h2>Seven toys, one squadron</h2>
+      <h2>Pick your plane</h2>
       <p>Each one has its own flight model.</p>
     </div>
     <div class="shelf">
@@ -208,6 +233,44 @@ footer{margin-top:80px;font-size:.9rem;color:#6f8c88}
       <article class="toy"><div class="pic"><img src="img/pony.png" alt="Silver toy fighter with a cartoon pilot" loading="lazy"></div><h3>Pony</h3><p>WWII fighter</p></article>
       <article class="toy"><div class="pic"><img src="img/seagull.png" alt="Blue gull-wing toy fighter" loading="lazy"></div><h3>Seagull</h3><p>WWII naval fighter</p></article>
       <article class="toy"><div class="pic"><img src="img/swallow.png" alt="Green elliptical-wing toy fighter" loading="lazy"></div><h3>Swallow</h3><p>WWII fighter</p></article>
+      <article class="toy"><div class="pic"><img src="img/hornet.png" alt="Stubby yellow toy racer with black stripes" loading="lazy"></div><h3>Hornet</h3><p>1930s air racer</p></article>
+      <article class="toy"><div class="pic"><img src="img/walrus.png" alt="Big twin-engine toy biplane with a walrus face" loading="lazy"></div><h3>Walrus</h3><p>WWI twin-engine bomber</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="play-sec">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Ways to play</h2>
+      <p>Alone, against the house, or against everyone.</p>
+    </div>
+    <div class="ways">
+      <div class="way big"><h3>Campaign</h3><p>Chapters of challenges: races, rings, precision landings and dogfights.</p></div>
+      <div class="way"><h3>Waves</h3><p>More rivals every round. Land on furniture to repair.</p></div>
+      <div class="way"><h3>Duel</h3><p>One ace. Beat it and a better one turns up.</p></div>
+      <div class="way"><h3>Battle royale</h3><p>Eight planes. Last one flying wins.</p></div>
+      <div class="way"><h3>Domination</h3><p>Circle low over the capture points. First to 100.</p></div>
+      <div class="way"><h3>Free flight</h3><p>No rivals. Just you and the furniture.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="shop-sec">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Make it yours in the workshop</h2>
+      <p>New paint, props, wings, skis, ballast and toy weapons: BB pellets, suction darts, staples and paint bombs.</p>
+    </div>
+    <div class="paints" aria-label="Humpy in eight paint jobs">
+      <img src="img/paint-factory.webp" alt="Humpy painted factory" width="360" height="292" loading="lazy">
+      <img src="img/paint-red.webp" alt="Humpy painted red" width="360" height="292" loading="lazy">
+      <img src="img/paint-blue.webp" alt="Humpy painted blue" width="360" height="292" loading="lazy">
+      <img src="img/paint-yellow.webp" alt="Humpy painted yellow" width="360" height="292" loading="lazy">
+      <img src="img/paint-green.webp" alt="Humpy painted green" width="360" height="292" loading="lazy">
+      <img src="img/paint-lilac.webp" alt="Humpy painted lilac" width="360" height="292" loading="lazy">
+      <img src="img/paint-orange.webp" alt="Humpy painted orange" width="360" height="292" loading="lazy">
+      <img src="img/paint-white.webp" alt="Humpy painted white" width="360" height="292" loading="lazy">
     </div>
   </div>
 </section>
@@ -220,7 +283,7 @@ footer{margin-top:80px;font-size:.9rem;color:#6f8c88}
     </div>
     <div class="modes">
       <div class="mode"><h3>Toon</h3><p>Easy flying and bouncy crashes. Hand it to anyone.</p></div>
-      <div class="mode"><h3>Arcade</h3><p>Wave after wave of rivals, with flight assists on.</p></div>
+      <div class="mode"><h3>Arcade</h3><p>Flight assists on and toy weapons loaded.</p></div>
       <div class="mode"><h3>Sim</h3><p>A real flight model for every plane. Bring your stick.</p></div>
     </div>
     <div class="inputs"><span>Keyboard</span><span>Gamepad</span><span>Touch</span><span>HOTAS</span></div>
